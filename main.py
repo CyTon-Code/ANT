@@ -6,7 +6,7 @@ import sys
 from additional.copy_file import copy_file
 
 ant = ANT()
-
+ant.args = sys.argv
 # TODO: перейти позже на SQL.
 ant.mode_scripts = bool(copy_file("bd_v1/scripts.txt"))
 ant.mode_console = bool(copy_file("bd_v1/console.txt"))
@@ -14,11 +14,11 @@ ant.mode_arguments = bool(copy_file("bd_v1/arguments.txt"))
 
 if ant.mode_arguments:  # использовать аргументы при запуске ANT:
     print("start: arguments")
-    run_arguments(sys.argv)
+    run_arguments(ant.args)
 
 if ant.mode_scripts:  # использовать скрипты при запуске ANT:
     print("start: scripts")
-    run_scripts(ant.ant_path)
+    run_scripts(ant.path)
 
 if ant.mode_console:  # использовать общение пользователя с ANT:
     print("start: console")
