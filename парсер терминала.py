@@ -17,6 +17,9 @@ clear - чистка: пустые строки, точки и прочие эл
 
 реализация:
 """
+# TODO: glue_between_quotes -  сепаратором склеиваются только строки
+#  между кавычек. кавычки убираю только если между ними 1 слово.
+
 from additional.parser_space import parser_space
 from additional.parser_braces import parser_braces
 from additional.parser_clear import parser_clear
