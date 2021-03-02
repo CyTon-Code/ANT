@@ -1,13 +1,14 @@
 """
-'echo "Hello World!/n"' - Парсер пробелов: parser_probible()
-["echo", '"Hello', 'World!/n"']- Парсер кавычек. - разъединяет все
- строки отделяя кавычки отдельно: parser_kavichek
-clear()
+'echo "Hello World!/n"' - parser пробелов: parser_space()
+parser_clear()
+["echo", '"Hello', 'World!/n"']- parser кавычек. - разъединяет все
+ строки отделяя кавычки отдельно: parser_braces
+parser_clear()
 ["echo", '"', "Hello", "World!/n", '"'] - склеивание строк между кавычек
- пробелами:
-clear()
+ пробелами: glue_between_quotes
+parser_clear()
 ["echo", "Hello World!/n"]
-clear()
+parser_clear()
 
 
 clear - чистка: пустые строки, точки и прочие элементы черного списка.
@@ -16,87 +17,21 @@ clear - чистка: пустые строки, точки и прочие эл
 
 реализация:
 """
-clear = ["", "."]
-def parser_probible(stroka, sep=" "):
-    tmp = []
-    stroka += sep
-    text = ""
+from additional.parser_space import parser_space
+from additional.parser_braces import parser_braces
+from additional.parser_clear import parser_clear
+from additional.glue_between_quotes import glue_between_quotes
 
-    for i in stroka:
-        if i == sep:
-            tmp.append(text)
-            text = ""
-        else:
-            text += i
-    print(stroka, tmp, text, sep)
-    return tmp
-def parser_kavichek(stroka, sep='"'):
-    # if not sep in stroka:
-        # return [stroka]
-    tmp = []
-    # stroka += sep
-    text = ""
-
-    for i in stroka:
-        if i == sep:
-            # if not text in clear:
-            tmp.append(text)
-            tmp.append(sep)
-            text = ""
-        else:
-            text += i
-    # print(stroka, tmp, text, sep)
-    # if not text in clear:
-    tmp.append(text)
-    return tmp
-def parser_clear(stroka):
-    tmp = []
-    for i in stroka:
-        if not i in clear:
-            tmp.append(i)
-    return tmp
-def glay_kavichek(rmp, cal='"', sep=" "):
-    tmp = []
-    text = ""
-    flag = False
-    blag = None
-    # TODO: Нужно както между кавычек строки склеивать пробелами
-
-
-    for i in rmp:
-        if i == cal:
-            flag = not flag
-            # if flag:
-                # i = " "
-            # else:
-                # i = ""
-
-        text += i
-        if flag:
-            # text += i
-            # if blag:
-                # text += sep
-            # print(1, flag, blag, text, tmp, rmp, cal)
-            pass
-        else:
-            tmp.append(text.replace('"', ""))
-            text = ""
-        blag = flag
-    # print(1, flag, blag, text, tmp, rmp, cal)
-
-    print(tmp)
-
-
-stroka = 'echo "Hello World!/n"'
-stroka = parser_probible(stroka)
-print(stroka)
+string = 'echo "Hello World!/n"'
+string = parser_space(string)
+print(string)
 
 tmp = []
-for i in stroka:
-    tmp = tmp + [*parser_kavichek(i)]
+for i in string:
+    tmp = tmp + [*parser_braces(i)]
     # print(i)
 print(tmp)
 tmp = parser_clear(tmp)
 print(tmp)
-glay_kavichek(tmp)
+glue_between_quotes(tmp)
 # print(tmp)
