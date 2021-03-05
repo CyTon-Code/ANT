@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from additional.run_arguments import run_arguments
 from additional.run_scripts import run_scripts
 from additional.run_console import run_console
