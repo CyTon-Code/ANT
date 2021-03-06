@@ -1,18 +1,18 @@
 """
-'echo "Hello World!/n"' - parser пробелов: parser_space()
-parser_clear()
-["echo", '"Hello', 'World!/n"']- parser кавычек. - разъединяет все
- строки отделяя кавычки отдельно: parser_braces
-parser_clear()
-["echo", '"', "Hello", "World!/n", '"'] - склеивание строк между кавычек
- пробелами: glue_between_quotes
-parser_clear()
-["echo", "Hello World!/n"]
-parser_clear()
+    'echo "Hello World!/n"' - parser пробелов: parser_space()
+    parser_clear()
+    ["echo", '"Hello', 'World!/n"']- parser кавычек. - разъединяет все
+     строки отделяя кавычки отдельно: parser_braces
+    parser_clear()
+    ["echo", '"', "Hello", "World!/n", '"'] - склеивание строк между кавычек
+     пробелами: glue_between_quotes
+    parser_clear()
+    ["echo", "Hello World!/n"]
+    parser_clear()
 
 
-clear - чистка: пустые строки, точки и прочие элементы черного списка.
-- parser_clear
+    clear - чистка: пустые строки, точки и прочие элементы черного списка.
+    - parser_clear
 
 
 реализация:
